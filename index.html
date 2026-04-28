@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akan Name Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Decorative background pattern -->
+  <div class="background-pattern" aria-atomic="true"></div>
+    <div class="background-overlay" aria-hidden="true"></div>
+
+  <main class="container">
+
+    <header class="hero">
+      
+      <div class="adinkra-symbol" aria-hidden="true">☽</div>
+      <img class = "logoimg" src="./akan.jpg" alt="Akan">
+      <h1>Akan Name<br /><em>Generator</em></h1>
+      <p class="subtitle">
+        Discover your Ghanaian soul name — rooted in the ancient Akan tradition
+        of naming children by the day of their birth.
+      </p>
+    </header>
+    <nav>
+        <ul class="nav-links">
+            <a href="#form-card">Get Your Name</a>
+            <a href="#result-card">See Result</a>
+            <a href="#table-card">Name Reference</a>
+        </ul>
+    </nav>
+
+    <section class="card form-card">
+      <div class="card-label">Enter your details</div>
+
+      <div class="form-group">
+        <label for="birthdate">Date of Birth</label>
+        <div class="date-inputs">
+          <div class="input-wrap">
+            <input type="number" id="day" placeholder="DD" min="1" max="31" aria-label="Day" />
+            <span class="input-unit">Day</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="month" placeholder="MM" min="1" max="12" aria-label="Month" />
+            <span class="input-unit">Month</span>
+          </div>
+          <div class="input-wrap wide">
+            <input type="number" id="year" placeholder="YYYY" min="1900" max="2100" aria-label="Year" />
+            <span class="input-unit">Year</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="gender-toggle">
+          <button class="gender-btn" data-gender="male" type="button">
+            <span class="gender-icon">♂</span> Male
+          </button>
+          <button class="gender-btn" data-gender="female" type="button">
+            <span class="gender-icon">♀</span> Female
+          </button>
+        </div>
+      </div>
+
+      <div id="error-msg" class="error-msg" role="alert" aria-live="polite"></div>
+
+      <button id="generate-btn" class="btn-generate" type="button">
+        <span class="btn-text">Reveal My Name</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </section>
+
+    <!-- Result panel (hidden by default) -->
+    <section class="card result-card" id="result-card" aria-live="polite">
+      <div class="card-label">Your Akan Name</div>
+      <div class="result-inner">
+        <div class="result-day" id="result-day"></div>
+        <div class="result-name" id="result-name"></div>
+        <div class="result-meaning" id="result-meaning"></div>
+      </div>
+      <button class="btn-reset" id="reset-btn" type="button">Try Another Date</button>
+    </section>
+
+    <!-- Day reference table -->
+    <section class="card table-card">
+      <div class="card-label">Akan Names by Day</div>
+      <table class="akan-table" aria-label="Akan names reference table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>♂ Male</th>
+            <th>♀ Female</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sunday</td><td>Kwasi</td><td>Akosua</td></tr>
+          <tr><td>Monday</td><td>Kwadwo</td><td>Adwoa</td></tr>
+          <tr><td>Tuesday</td><td>Kwabena</td><td>Abenaa</td></tr>
+          <tr><td>Wednesday</td><td>Kwaku</td><td>Akua</td></tr>
+          <tr><td>Thursday</td><td>Yaw</td><td>Yaa</td></tr>
+          <tr><td>Friday</td><td>Kofi</td><td>Afua</td></tr>
+          <tr><td>Saturday</td><td>Kwame</td><td>Ama</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="about">
+      <div class="card-label">About Akan Naming</div>
+      <h3>The Kra Din Tradition</h3>
+      <p class="about-content">
+        In Akan culture, every child receives a soul name (kra din) based on the day of the week they were born.This name is believed toreflect the spiritual identity and destiny of the individual, conecting them to the universe from the moment of birth. The practice of naming children after their birth day is a cherished tradition that has been passed down through generations, serving as a powerful link to Ghanaian heritage and cultural identity.
+      </p>
+      <p></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built with ♥ — honouring Ghanaian culture &amp; Akan tradition</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
