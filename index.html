@@ -1,125 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akan Name Generator</title>
-  <link rel="stylesheet" href="styles.css" />
-  
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Decorative background pattern -->
-  <div class="background-pattern" aria-atomic="true"></div>
-    <div class="background-overlay" aria-hidden="true"></div>
-
-  <main class="container">
-
-    <header class="hero">
-      
-      <div class="symbol" aria-hidden="true">☽</div>
-      <img class = "logoimg" src="./akan.jpg" alt="Akan">
-      <h1>Akan Name<br /><em>Generator</em></h1>
-      <p class="subtitle">
-        Discover your Ghanaian soul name — rooted in the ancient Akan tradition
-        of naming children by the day of their birth.
-      </p>
-    </header>
-    <nav>
-        <ul class="nav-links">
-            <a href="#form-card">Get Your Name</a>
-            <a href="#result-card"> Result</a>
-            <a href="#table-card">Name Reference</a>
-        </ul>
-    </nav>
-
-    <section class="card form-card">
-      <div class="card-label">Enter your details</div>
-
+  <div class="container">
+    <h1>Akan Name Generator</h1>
+    
+    <form id="akanForm">
       <div class="form-group">
-        <label for="birthdate">Date of Birth</label>
-        <div class="date-inputs">
-          <div class="input-wrap">
-            <input type="number" id="day" placeholder="DD" min="1" max="31" aria-label="Day" />
-            <span class="input-unit">Day</span>
-          </div>
-          <div class="input-wrap">
-            <input type="number" id="month" placeholder="MM" min="1" max="12" aria-label="Month" />
-            <span class="input-unit">Month</span>
-          </div>
-          <div class="input-wrap wide">
-            <input type="number" id="year" placeholder="YYYY" min="1900" max="2100" aria-label="Year" />
-            <span class="input-unit">Year</span>
-          </div>
-        </div>
+        <label for="name">Your Current Name</label>
+        <input type="text" id="name" placeholder="e.g. John" required>
       </div>
 
       <div class="form-group">
-        <label>Gender</label>
-        <div class="gender-toggle">
-          <button class="gender-btn" data-gender="male" type="button">
-            <span class="gender-icon">♂</span> Male
-          </button>
-          <button class="gender-btn" data-gender="female" type="button">
-            <span class="gender-icon">♀</span> Female
-          </button>
-        </div>
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="" disabled selected>Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
       </div>
 
-      <div id="error-msg" class="error-msg" role="alert" aria-live="polite"></div>
-
-      <button id="generate-btn" class="btn-generate" type="button">
-        <span class="btn-text">Reveal My Name</span>
-        <span class="btn-arrow">→</span>
-      </button>
-    </section>
-
-    <!-- Result panel (hidden by default) -->
-    <section class="card result-card" id="result-card" aria-live="polite">
-      <div class="card-label">Your Akan Name</div>
-      <div class="result-inner">
-        <div class="result-day" id="result-day"></div>
-        <div class="result-name" id="result-name"></div>
-        <div class="result-meaning" id="result-meaning"></div>
+      <div class="form-group">
+        <label for="day">Day of Birth</label>
+        <input type="number" id="day" min="1" max="31" placeholder="1-31" required>
       </div>
-      <button class="btn-reset" id="reset-btn" type="button">Try Another Date</button>
-    </section>
 
-    <!-- Day reference table -->
-    <section class="card table-card">
-      <div class="card-label">Akan Names by Day</div>
-      <table class="akan-table" aria-label="Akan names reference table">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>♂ Male</th>
-            <th>♀ Female</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Sunday</td><td>Kwasi</td><td>Akosua</td></tr>
-          <tr><td>Monday</td><td>Kwadwo</td><td>Adwoa</td></tr>
-          <tr><td>Tuesday</td><td>Kwabena</td><td>Abenaa</td></tr>
-          <tr><td>Wednesday</td><td>Kwaku</td><td>Akua</td></tr>
-          <tr><td>Thursday</td><td>Yaw</td><td>Yaa</td></tr>
-          <tr><td>Friday</td><td>Kofi</td><td>Afua</td></tr>
-          <tr><td>Saturday</td><td>Kwame</td><td>Ama</td></tr>
-        </tbody>
-      </table>
-    </section>
-    <section class="about">
-      <div class="card-label">About Akan Naming</div>
-      <h3>The Kra Din Tradition</h3>
-      <p class="about-content">
-        In Akan culture, every child receives a soul name (kra din) based on the day of the week they were born.This name is believed toreflect the spiritual identity and destiny of the individual, conecting them to the universe from the moment of birth. The practice of naming children after their birth day is a cherished tradition that has been passed down through generations, serving as a powerful link to Ghanaian heritage and cultural identity.
-      </p>
-      <p></p>
-    </section>
+      <div class="form-group">
+        <label for="month">Month of Birth</label>
+        <select id="month" required>
+          <option value="" disabled selected>Select month</option>
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+        </select>
+      </div>
 
-  </main>
+      <div class="form-group">
+        <label for="year">Year of Birth</label>
+        <input type="number" id="year" placeholder="e.g. 1990" required>
+      </div>
 
+      <button type="submit">Generate Name</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
   <footer>
-    <p>Built with ♥ — honouring Ghanaian culture &amp; Akan tradition</p>
+    <p>&copy; 2024 Akan Name Generator. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
