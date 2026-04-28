@@ -2,7 +2,7 @@ body{
     color: blue;
     margin: 0;
     padding: 0;
-    background-color: rgb(13, 105, 13);
+    background-color: rgb(48, 150, 48);
     line-height: 1.8;
     font-family: Arial, sans-serif;
 
@@ -63,17 +63,13 @@ section:hover{
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 12px;
+    margin-top: 15px;
+    
 }
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+ table td {
+    padding: 15px;
+    border-radius: 4px;
     text-align: center;
-}
-table th {
-    background-color: lightblue;
-    color: rgb(67, 67, 184);
-    font-weight: 700;
 }
 
 
