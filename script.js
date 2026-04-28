@@ -7,6 +7,7 @@ const DAYS_OF_WEEK = [
   "Friday",
   "Saturday",
 ];
+
 const AKAN_NAMES = {
   Sunday: {
     male: "Kwasi",
@@ -51,6 +52,23 @@ const AKAN_NAMES = {
       "Saturday-born individuals are seen as dependable, grounded, and naturally authoritative.",
   },
 };
+const dayInput = document.getElementById("day");
+const monthInput = document.getElementById("month");
+const yearInput = document.getElementById("year");
+const generateBtn = document.getElementById("generate-btn");
+const resetBtn = document.getElementById("reset-btn");
+const errorMsg = document.getElementById("error-msg");
+const resultCard = document.getElementById("result-card");
+const resultDayEl = document.getElementById("result-day");
+const resultNameEl = document.getElementById("result-name");
+const resultMeaningEl = document.getElementById("result-meaning");
+const genderButtons = document.querySelectorAll(".gender-btn");
+const tableRows = document.querySelectorAll(".akan-table tbody tr");
+
+let selectedGender = null;
+function daysInMonth(month, year) {
+  return new Date(year, month, 0).getDate();
+}
 function validateInputs(day, month, year, gender) {
   if (!day || !month || !year) {
     return {
@@ -71,10 +89,10 @@ function validateInputs(day, month, year, gender) {
     };
   }
 
-  if (year < 1900 || year > 2100) {
+  if (year < 1900 || year > 2026) {
     return {
       valid: false,
-      message: "Please enter a year between 1900 and 2100.",
+      message: "Please enter a year between 1900 and 2026.",
     };
   }
 
@@ -88,19 +106,15 @@ function validateInputs(day, month, year, gender) {
   return { valid: true, message: "" };
 }
 function calculateDayOfWeek(day, month, year) {
-  if (month <= 2) {
-    month += 12;
-    year -= 1;
-  }
-
-  const CC = Math.floor(year / 100); 
+  const CC = Math.floor(year / 100);
   const YY = year % 100;
 
   const d =
-    (Math.floor((4 * CC - 2) / 4) + 
-      Math.floor((5 * YY) / 4) + 
-      Math.floor((26 * (month + 1)) / 10) + 
-      day) % 7; 
+    (Math.floor((4 * CC - 2) / 4) +
+      Math.floor((5 * YY) / 4) +
+      Math.floor((26 * (month + 1)) / 10) +
+      day) %
+    7;
 
   return ((d % 7) + 7) % 7;
 }
@@ -125,40 +139,12 @@ function clearError() {
   );
 }
 
-function highlightTableRow(dayName) {
-  tableRows.forEach((row) => {
-    const cell = row.querySelector("td");
-    if (cell && cell.textContent.trim() === dayName) {
-      row.classList.add("highlight");
-      row.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } else {
-      row.classList.remove("highlight");
-    }
-  });
-}
-
 function displayResult(dayName, akanName, meaning) {
   resultDayEl.textContent = `Born on a ${dayName}`;
   resultNameEl.textContent = akanName;
   resultMeaningEl.textContent = meaning;
 
   resultCard.classList.add("visible");
-
-  setTimeout(() => {
-    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 100);
-}
-
-function resetUI() {
-  resultCard.classList.remove("visible");
-  tableRows.forEach((row) => row.classList.remove("highlight"));
-  clearError();
-  dayInput.value = "";
-  monthInput.value = "";
-  yearInput.value = "";
-  selectedGender = null;
-  genderButtons.forEach((btn) => btn.classList.remove("active"));
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 genderButtons.forEach((btn) => {
@@ -168,10 +154,6 @@ genderButtons.forEach((btn) => {
     selectedGender = btn.dataset.gender;
     clearError();
   });
-});
-
-[dayInput, monthInput, yearInput].forEach((input) => {
-  input.addEventListener("input", clearError);
 });
 
 generateBtn.addEventListener("click", () => {
@@ -193,10 +175,4 @@ generateBtn.addEventListener("click", () => {
 
   displayResult(dayName, name, meaning);
   highlightTableRow(dayName);
-});
-
-resetBtn.addEventListener("click", resetUI);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") generateBtn.click();
 });
