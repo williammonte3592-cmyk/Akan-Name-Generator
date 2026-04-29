@@ -26,14 +26,13 @@ document.getElementById("akanForm").addEventListener("submit", function (e) {
   let CC = Math.floor(year / 100);
   let YY = year % 100;
 
-  let d =
-    (day +
-      Math.floor((26 * (month + 1)) / 10) +
-      YY +
-      Math.floor(YY / 4) +
-      Math.floor(CC / 4) -
-      2 * CC) %
-    7;
+  let d = (
+    Math.floor(CC / 4) - 2 * CC - 1 +
+    Math.floor(5 * YY / 4) +
+    Math.floor(26 * (month + 1 ) / 10) +
+    day
+  )% 7;
+    
 
   if (d < 0) d += 7;
 
