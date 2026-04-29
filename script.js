@@ -40,16 +40,7 @@ document.getElementById("akanForm").addEventListener("submit", function (e) {
   let dayMap = [1, 2, 3, 4, 5, 6, 0];
   d = dayMap[d];
 
- 
-  let maleNames = [
-    "Kwasi",
-    "Kwadwo",
-    "Kwabena",
-    "Kwaku",
-    "Yaw",
-    "Kofi",
-    "Kwame",
-  ];
+  let maleNames = ["Kwasi", "Kwadwo","Kwabena","Kwaku", "Yaw", "Kofi","Kwame",];
   let femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
   let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
